@@ -1,0 +1,1 @@
+CodeWar's katas solutions
