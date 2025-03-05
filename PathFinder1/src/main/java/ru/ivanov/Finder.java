@@ -98,7 +98,7 @@ public class Finder {
 }
 
 class Maze{
-    private final List<Net> nets;;
+    private final List<Net> nets;
 
     public Maze(int sideLength) {
         nets = new ArrayList<>(sideLength*sideLength);
@@ -377,5 +377,5 @@ class Net {
 }
 
 enum NetType{
-    Empty, Wall, Start, Finish;
+    Empty, Wall, Start, Finish
 }
