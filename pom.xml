@@ -18,6 +18,7 @@
         <module>CreditCardMask</module>
         <module>MultiplesOf3Or5</module>
         <module>SquareNSum</module>
+        <module>SoManyPermutatons</module>
     </modules>
 
     <properties>
