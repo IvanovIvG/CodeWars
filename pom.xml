@@ -19,6 +19,8 @@
         <module>MultiplesOf3Or5</module>
         <module>SquareNSum</module>
         <module>SoManyPermutatons</module>
+        <module>AddingBigNumbers</module>
+        <module>VigenereCipherHelper</module>
     </modules>
 
     <properties>
