@@ -21,6 +21,8 @@
         <module>SoManyPermutatons</module>
         <module>AddingBigNumbers</module>
         <module>VigenereCipherHelper</module>
+        <module>BinaryScore</module>
+        <module>RomanNumeralsHelper</module>
     </modules>
 
     <properties>
