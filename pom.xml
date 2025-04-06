@@ -23,6 +23,7 @@
         <module>VigenereCipherHelper</module>
         <module>BinaryScore</module>
         <module>RomanNumeralsHelper</module>
+        <module>PathFinder3</module>
     </modules>
 
     <properties>
@@ -37,6 +38,11 @@
             <artifactId>junit-jupiter</artifactId>
             <version>5.8.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.13.0</version>
         </dependency>
     </dependencies>
 
