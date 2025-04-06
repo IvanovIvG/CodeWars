@@ -4,8 +4,6 @@ import java.util.*;
  * @author Ivan Ivanov
  **/
 public class Finder {
-    //Nets of maze
-    private static List<Net> mazeNets;
     private static Net start;
     private static Net finish;
 
@@ -14,7 +12,7 @@ public class Finder {
 
     static int pathFinder(String maze) {
         if (mazeIsTrivial(maze)) return 0;
-        createStaticCollections(maze);
+        createStaticCollectionsAndField(maze);
 
         while (true) {
             Jump bestJump = findBestJump();
@@ -31,8 +29,8 @@ public class Finder {
         return maze.length() == 1;
     }
 
-    private static void createStaticCollections(String maze) {
-        mazeNets = NetsCreator.createNets(maze);
+    private static void createStaticCollectionsAndField(String maze) {
+        List<Net> mazeNets = NetsCreator.createNets(maze);
         start = mazeNets.get(0);
         finish = mazeNets.get(mazeNets.size() - 1);
 
@@ -47,14 +45,7 @@ public class Finder {
     }
 
     private static Jump findBestJump() {
-        Jump bestJump = new Jump(null, null, 1000);
-        for (int i = 0; i < possibleJumps.size(); i++) {
-            Jump jump = possibleJumps.get(i);
-            if(jump.numberOfClimbsToAchieveToNet() < bestJump.numberOfClimbsToAchieveToNet()){
-                bestJump = jump;
-            }
-        }
-        return bestJump;
+        return possibleJumps.stream().min(Comparator.comparing(Jump::numberOfClimbsToAchieveToNet)).orElse(null);
     }
 
     private static List<Jump> createJumpsFromNetToNets(Net fromNet, List<Net> netsToJump) {
@@ -76,37 +67,44 @@ public class Finder {
 
     private static void removeImpossibleJumps(Jump jumpToMake) {
         Net netToJump = jumpToMake.netToJump();
-        List<Jump> impossibleJumps = new ArrayList<>();
-        for (int i = 0; i < possibleJumps.size(); i++) {
-            Jump jump = possibleJumps.get(i);
-            if(jump.netToJump() == netToJump){
-                impossibleJumps.add(jump);
-            }
-        }
-        for (int i = 0; i < impossibleJumps.size(); i++) {
-            Jump jump = impossibleJumps.get(i);
+        List<Jump> impossibleJumps = getImpossibleJumps(netToJump);
+        for (Jump jump : impossibleJumps) {
             possibleJumps.remove(jump);
         }
     }
 
-    private static void addNewJumps(Jump jumpToMake) {
-        Net netToJump = jumpToMake.netToJump();
-        List<Net> possibleNetsJumpTo = netToJump.getCloseNets();
-        List<Net> newNetsJumpTo = new ArrayList<>();
-        for (int i = 0; i < possibleNetsJumpTo.size(); i++) {
-            Net net = possibleNetsJumpTo.get(i);
-            if(!net.isAchieved()){
-                newNetsJumpTo.add(net);
+    private static List<Jump> getImpossibleJumps(Net netToJump) {
+        List<Jump> impossibleJumps = new ArrayList<>();
+        for (Jump jump : possibleJumps) {
+            if (jump.netToJump() == netToJump) {
+                impossibleJumps.add(jump);
             }
         }
-        List<Jump> newJumps = createJumpsFromNetToNets(netToJump, newNetsJumpTo);
-        possibleJumps.addAll(newJumps);
+        return impossibleJumps;
     }
 
     private static void achieveNewNet(Jump jump) {
         Net netToAchieve = jump.netToJump();
         netToAchieve.setNumberOfClimbsToAchieve(jump.numberOfClimbsToAchieveToNet());
         netToAchieve.setAchieved(true);
+    }
+
+    private static void addNewJumps(Jump jumpToMake) {
+        Net netToJump = jumpToMake.netToJump();
+        List<Net> netsJumpTo = getNewNetsJumpTo(netToJump);
+        List<Jump> newJumps = createJumpsFromNetToNets(netToJump, netsJumpTo);
+        possibleJumps.addAll(newJumps);
+    }
+
+    private static List<Net> getNewNetsJumpTo(Net netFromJump) {
+        List<Net> possibleNetsJumpTo = netFromJump.getCloseNets();
+        List<Net> newNetsJumpTo = new ArrayList<>();
+        for (Net net : possibleNetsJumpTo) {
+            if (!net.isAchieved()) {
+                newNetsJumpTo.add(net);
+            }
+        }
+        return newNetsJumpTo;
     }
 
     private static boolean finishAchievedAfterJump(Jump jump) {
