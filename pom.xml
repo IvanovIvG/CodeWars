@@ -24,6 +24,7 @@
         <module>BinaryScore</module>
         <module>RomanNumeralsHelper</module>
         <module>PathFinder3</module>
+        <module>PathFinder4</module>
     </modules>
 
     <properties>
