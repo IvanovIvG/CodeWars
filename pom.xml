@@ -25,6 +25,8 @@
         <module>RomanNumeralsHelper</module>
         <module>PathFinder3</module>
         <module>PathFinder4</module>
+        <module>BitCounting</module>
+        <module>SortBinaryTreeByLevels</module>
     </modules>
 
     <properties>
