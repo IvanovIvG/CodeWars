@@ -27,6 +27,7 @@
         <module>PathFinder4</module>
         <module>BitCounting</module>
         <module>SortBinaryTreeByLevels</module>
+        <module>TheMillionthFibonacciKata</module>
     </modules>
 
     <properties>
