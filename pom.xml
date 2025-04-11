@@ -28,6 +28,7 @@
         <module>BitCounting</module>
         <module>SortBinaryTreeByLevels</module>
         <module>TheMillionthFibonacciKata</module>
+        <module>Loopover</module>
     </modules>
 
     <properties>

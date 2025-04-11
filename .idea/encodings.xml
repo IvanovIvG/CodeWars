@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/4By4Skyscrapers/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/4By4Skyscrapers/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/AddingBigNumbers/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/AddingBigNumbers/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ArrayPlusArray/src/main/java" charset="UTF-8" />
@@ -13,6 +15,8 @@
     <file url="file://$PROJECT_DIR$/CountOddNumbersBelowN/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CreditCardMask/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CreditCardMask/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Loopover/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Loopover/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/MilesPerGallonToKilometersPerLiter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/MilesPerGallonToKilometersPerLiter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/MultiplesOf3Or5/src/main/java" charset="UTF-8" />
