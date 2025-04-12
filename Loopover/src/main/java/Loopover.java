@@ -19,11 +19,7 @@ public class Loopover {
         if (alreadySolved(mixedUpBoard, solvedBoard)) {
             return Collections.emptyList();
         }
-        solution = new ArrayList<>();
-        board = new Board(solution, mixedUpBoard);
-        solutiondBoard = new Board(Collections.emptyList(), solvedBoard);
-        boardHeight = mixedUpBoard.length;
-        boardWidth = mixedUpBoard[0].length;
+        fillInStaticData(mixedUpBoard, solvedBoard);
 
         solveFirstLines();
         solveLastLine();
@@ -35,7 +31,6 @@ public class Loopover {
             solveByEdgePermutations();
         }
 
-        board.printBoard();
         return solution;
     }
 
@@ -51,6 +46,14 @@ public class Loopover {
             }
         }
         return true;
+    }
+
+    private static void fillInStaticData(char[][] mixedUpBoard, char[][] solvedBoard) {
+        solution = new ArrayList<>();
+        board = new Board(solution, mixedUpBoard);
+        solutiondBoard = new Board(Collections.emptyList(), solvedBoard);
+        boardHeight = mixedUpBoard.length;
+        boardWidth = mixedUpBoard[0].length;
     }
 
     private static void solveFirstLines() {
@@ -229,19 +232,8 @@ public class Loopover {
     }
 
     private static void solveByCornerPermutations() {
-        int lastLineIndex = boardHeight - 1;
-        int rightColumnIndex = boardWidth - 1;
-        int counter = 0;
         while (gameGoOn()) {
-            if (counter > 100) {
-                solution = null;
-                return;
-            }
-            board.moveLineRight(lastLineIndex, 1);
-            board.moveColumnDown(rightColumnIndex, 1);
-            board.moveLineLeft(lastLineIndex, 1);
-            board.moveColumnUp(rightColumnIndex, 1);
-            counter++;
+            roundRightDownCornerOnAntiClockWise();
         }
     }
 
@@ -457,7 +449,6 @@ public class Loopover {
         board.moveColumnDown(rightColumnIndex, 1);
         board.moveLineLeft(lastLineIndex, 1);
         board.moveColumnUp(rightColumnIndex, 1);
-
     }
 
     private static void roundRightColumnWithCornerNetsWithoutCentralNetOnClockWise(int moves) {
@@ -481,7 +472,6 @@ public class Loopover {
             board.moveColumnUp(rightColumnIndex, 1);
         }
     }
-
 }
 
 class Board {
@@ -512,7 +502,8 @@ class Board {
             for (int j = 0; j < boardWidth; j++) {
                 int line = i;
                 int column = j;
-                board.stream().filter((Net net) -> net.getI() == line).filter((Net net) -> net.getJ() == column).forEach(System.out::print);
+                board.stream().filter((Net net) -> net.getI() == line).filter((Net net) -> net.getJ() == column).
+                        forEach(System.out::print);
             }
             System.out.println();
         }
