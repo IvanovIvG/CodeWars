@@ -1,0 +1,27 @@
+Given a string containing the current state of the control crystals inner pathways (labeled as "X")
+and its gaps (labeled as "."), generate the shortest path from the start node (labeled as "S")
+to the goal node (labeled as "G") and return the new pathway (labeled with "P" characters).
+If no solution is possible, return the string "Oh for crying out loud..." (in frustration).
+
+    Nodes labeled as "X" are not traversable.
+    Nodes labeled as "." are traversable.
+    A pathway can be grown in eight directions (up, down, left, right, up-left, up-right, down-left, down-right),
+        so diagonals are possible.
+    Nodes labeled "S" and "G" are not to be replaced with "P" in the case of a solution.
+    The shortest path is defined as the path with the shortest euclidean distance going from one node to the next.
+    If several paths are possible with the same shortest distance, return any one of them.
+Note that the mazes won't always be squares.
+
+.S...             .SP..
+XXX..             XXXP.
+.X.XX      =>     .XPXX
+..X..             .PX..
+G...X             G...X
+
+S....
+XX...
+...XX      =>     "Oh for crying out loud..."
+.XXX.
+XX..G
+
+Note: Your solution will have to be efficient because it will have to deal with a lot of maps and big ones.
