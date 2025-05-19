@@ -30,6 +30,8 @@
         <module>TheMillionthFibonacciKata</module>
         <module>Loopover</module>
         <module>StargateSG-1</module>
+        <module>LineSafari</module>
+        <module>CountOfPositivesSumOfNegatives</module>
     </modules>
 
     <properties>
