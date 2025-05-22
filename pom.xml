@@ -32,6 +32,7 @@
         <module>StargateSG-1</module>
         <module>LineSafari</module>
         <module>CountOfPositivesSumOfNegatives</module>
+        <module>VowelCount</module>
     </modules>
 
     <properties>
